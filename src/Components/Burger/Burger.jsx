@@ -1,19 +1,22 @@
 import React, {useContext} from 'react'
 import {BurgerBuilderContext} from '../BurgerBuilder/BurgerBuilder'
+import classes from './Burger.css'
 const Burger = () => {
 
-  /* */
-
-       const {ingredients,setIngredients} = useContext(BurgerBuilderContext);
-       console.log(ingredients)
+      const {state,setState} = useContext(BurgerBuilderContext);
   return (
-    <ul>
-       {ingredients.map(ingredient => {
-           return <li>{ingredient.name}
-                  <button onClick={()=>{setIngredients([...ingredients,ingredient])}}>{'Remove'+ingredient.name}</button>
-                  </li>
+    <>
+       {state.map((ingredient,i) => {
+           return <div className = {ingredient} key={i}>{ingredient}
+                  <button onClick={ () => {              
+                      setState([...state].filter((_, curi) => curi !== i))
+                      }
+
+                    }>{'Remove this '+ingredient}</button>
+                  </div>
        })}
-    </ul>
+       <button onClick = {()=>{setState([])}}>START OVER?</button>
+    </>
   )
 }
 

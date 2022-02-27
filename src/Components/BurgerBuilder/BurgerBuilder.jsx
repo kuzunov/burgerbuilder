@@ -3,20 +3,12 @@ import Burger from '../Burger/Burger';
 import IngredientList from '../IngredientsList/IngredientList';
 export const BurgerBuilderContext = React.createContext();
 const BurgerBuilder = () => {
-    const [ingredients,setIngredients] = useState({
-        ingredients: [
-            {   
-            id:0,
-            name:"topBun"
-        },
-        {
-            id:1,
-            name:"botBun"
-        },],
-})
+    const [state,setState] = useState(
+        []
+) 
     return (
         <>
-        <BurgerBuilderContext.Provider value={ingredients}>
+        <BurgerBuilderContext.Provider value={{state,setState}}>
             <Burger />
             <IngredientList />
         </BurgerBuilderContext.Provider>
