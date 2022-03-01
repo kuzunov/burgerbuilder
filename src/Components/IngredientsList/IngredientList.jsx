@@ -12,25 +12,18 @@ const ingredientsList = [
 'botBun',
 ];
 
-const IngredientList = () => {
-const {state,setState} = useContext(BurgerBuilderContext); 
-  return (
-    <>
-     {(state[0]!=='topBun')? <h2>Are you mad?! Start with a top BUN! <Button text='Add' onClick={() => {
-                setState(['topBun'].concat([...state]))}}></Button></h2>:<p></p>}
-    <ul>
-        {
-          ingredientsList.map(ingredient => {
-            return <li key={ingredient}>{ingredient}
-                <Button text='Add' onClick={() => {
-                setState([...state].concat([ingredient]))}}></Button>
-            </li>
-        })}
-            
-    </ul>
-    {(state[state.length-1]!=='botBun')? <h2>Maybe add a BotBun? <Button text='Add' onClick={() => {
-                setState([...state].concat(['botBun']))}}></Button></h2>:<p></p>}
-     </>
+const IngredientList = ({addIngredient}) => {
+  return ( <>
+          {ingredientsList.map(ingredient => {
+            return <div key={ingredient}>{ingredient}
+            <button onClick={
+              () => {addIngredient(ingredient)}
+            }>Add {ingredient}</button>
+
+            </div>
+          })
+        }
+  </>
   )
 }
 

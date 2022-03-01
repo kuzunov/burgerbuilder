@@ -1,18 +1,16 @@
-import React, {useState} from 'react';
+import React, {Context, useState,useContext} from 'react';
 import Burger from '../Burger/Burger';
-import IngredientList from '../IngredientsList/IngredientList';
-export const BurgerBuilderContext = React.createContext();
+import Cart from '../Cart/Cart' 
+export const CartContext = React.createContext();
 const BurgerBuilder = () => {
-    const [state,setState] = useState(
-        []
-) 
-    return (
-        <>
-        <BurgerBuilderContext.Provider value={{state,setState}}>
+    const [cartState,setCart] = useState([
+        ]);
+
+    return ( <>
+    <CartContext.Provider value={[cartState,setCart]}>
+            <Cart />
             <Burger />
-            <IngredientList />
-        </BurgerBuilderContext.Provider>
-        </>
-    );
+            </CartContext.Provider>
+            </>);
 }
 export default BurgerBuilder;
