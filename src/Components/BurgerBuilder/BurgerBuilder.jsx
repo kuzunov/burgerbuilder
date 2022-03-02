@@ -10,7 +10,7 @@ const BurgerBuilder = () => {
     <CartContext.Provider value={[cartState,setCart]}>
             <Cart />
             <Burger />
-            </CartContext.Provider>
+    </CartContext.Provider>
             </>);
 }
 export default BurgerBuilder;

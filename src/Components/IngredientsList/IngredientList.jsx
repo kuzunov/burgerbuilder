@@ -1,6 +1,4 @@
-import React,{useContext} from 'react';
-import { Button } from '../Button/Button';
-import {BurgerBuilderContext} from '../BurgerBuilder/BurgerBuilder'
+import React from 'react';
 
 
 const ingredientsList = [ 
